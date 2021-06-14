@@ -33,8 +33,8 @@ Usage
 ### Basic
 You need a txt file containing the bitcoin addresses with the balance line by line.
 You can check addressesExample.txt file
-
-`cryptobrute.py -i address.txt -o results.txt`
+(tested with python version 3)
+`python cryptobrute.py -i address.txt -o results.txt`
 
 
 ### Supporting this project
