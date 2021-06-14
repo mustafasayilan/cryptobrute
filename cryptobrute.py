@@ -3,17 +3,24 @@ import os
 from multiprocessing import Process
 import argparse
 import sys
+import signal
 
+def handler(signum, frame):
+    print('Exiting')
+    sys.exit()
+# Set the signal handler
+signal.signal(signal.SIGINT, handler)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-o", "--output", action='store', dest='output', help="Results will write this file.")
+parser.add_argument("-p", "--maxprocess", action='store', dest='maxprocess', help="Maximum process. Default 5")
 parser.add_argument("-i", "--input", action='store', dest='input', help="Select input address file")
 
 
 args = parser.parse_args()
 inputFileName = ""
 outputFileName = ""
-
+maximumProcess = 5
 if args.input:
     inputFileName = args.input
 else:
@@ -23,7 +30,9 @@ if args.output:
     outputFileName = args.input
 else:
     sys.exit("Please select output file with -o results.txt")
-
+    
+if args.maxprocess:
+    maximumProcess = int(args.maxprocess)
 
 
 global addressArray
@@ -85,11 +94,11 @@ class cm:
                 if you change total process you have to change second parameter
                 cm.total += 5*secondParameter
                 """
-                cm.total += 5*7
+                cm.total += 5 * maximumProcess
                 cm.founded += found
                 if (i*5)%10000 == 0:
-                    print("Check Worker :"+pss+" Address: " + addr1+" Privatekey uncompressed "+heks ,end = "\n")
-                if pss == "1":
+                    print("Check Worker :"+str(pss)+" Address: " + addr1+" Privatekey uncompressed "+heks ,end = "\n")
+                if pss == 0:
                     print(" Total: "+str(cm.total)+" Founded: " + str(cm.founded) ,end = "\r")
                 
                         
@@ -106,16 +115,11 @@ class cm:
 if __name__ == "__main__":
 
     read.readFromText()
-    """
-    If you wants mor or less proccess you can change here
-    """
-    processes = [Process(target=cm.multitask, args=("1",)),
-                 Process(target=cm.multitask, args=("2",)),
-                 Process(target=cm.multitask, args=("3",)),
-                 Process(target=cm.multitask, args=("4",)),
-                 Process(target=cm.multitask, args=("5",)),
-                 Process(target=cm.multitask, args=("6",)),
-                 Process(target=cm.multitask, args=("7",))]
+    processes = [Process(target=cm.multitask, args=(0,))]
+    i = 0
+    while i < maximumProcess:
+        processes.append(Process(target=cm.multitask, args=((i+1),)))
+        i+=1
 
     
     for process in processes:
@@ -123,3 +127,4 @@ if __name__ == "__main__":
 
     for process in processes:
         process.join()
+        
