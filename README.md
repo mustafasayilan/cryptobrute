@@ -46,10 +46,12 @@ Usage
 You need a txt file containing the bitcoin addresses with the balance line by line.
 You can check addressesExample.txt file
 (tested with python version 3)
-`python cryptobrute.py -i address.txt -o results.txt
+```
+python cryptobrute.py -i address.txt -o results.txt
 -p, --maxprocess N          N points per thread (default 5)
 -i, --in FILE           Read text from FILE, one per line
--o, --out FILE          Write keys to FILE`
+-o, --out FILE          Write keys to FILE
+```
 
 ### Supporting this project
 
