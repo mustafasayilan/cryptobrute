@@ -3,12 +3,29 @@
 
 Bitcoin and crypto Brute Force 2021 2022 
 
+This project createing randomly bitcoin address and checking your address list. If your list has bitcoin, it will save your result file. 
+This project not for steal money. This project for understand about crypto money.
+
 Disclaimer
 ----------
 Just because you *can* steal someone's money doesn't mean you *should*.
 Stealing would make you a jerk. Don't be a jerk.
 
 (From Brainflayer with respect)
+
+Build
+--------
+
+Thanks for https://github.com/fortesp/bitcoinaddress 
+
+Packages should install with
+
+```
+pip install bitcoinaddress
+pip install argparse
+pip install multiprocessing
+```
+
 
 Usage
 -----
