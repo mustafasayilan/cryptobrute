@@ -3,11 +3,13 @@ import os
 from multiprocessing import Process
 import argparse
 import sys
-# Initiate the parser
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-o", "--output", action='store', dest='output', help="Results will write this file.")
 parser.add_argument("-i", "--input", action='store', dest='input', help="Select input address file")
-# Read arguments from the command line
+
+
 args = parser.parse_args()
 inputFileName = ""
 outputFileName = ""
@@ -28,11 +30,12 @@ global addressArray
 addressArray = {}
 class read:
     def readFromText():
+        print("Addresses loading please wait...")
         addrfile = open(inputFileName, 'r')
         Lines = addrfile.readlines()
         for line in Lines:
             addressArray[line.rstrip('\n')] = ""
-        print("addresses readed")
+        print("Addresses Loaded")
 class save:
 
     def toFile(text):
@@ -55,9 +58,9 @@ class check:
         return balance
 
 class cm:
-    toplam = 0
-    bulunan = 0
-    def coklu(pss):
+    total = 0
+    founded = 0
+    def multitask(pss):
         i = 0
         balance = float(0)
         found = 0
@@ -78,12 +81,16 @@ class cm:
                 balance += float(check.balance(addr3))
                 balance += float(check.balance(addr4))
                 balance += float(check.balance(addr5))
-                cm.toplam += 5*7
-                cm.bulunan += found
+                """
+                if you change total process you have to change second parameter
+                cm.total += 5*secondParameter
+                """
+                cm.total += 5*7
+                cm.founded += found
                 if (i*5)%10000 == 0:
-                    print("Worker :"+pss+" Check: " + addr1+" - "+heks + " i "+str(i*5) ,end = "\n")
+                    print("Check Worker :"+pss+" Address: " + addr1+" Privatekey uncompressed "+heks ,end = "\n")
                 if pss == "1":
-                    print(" Total: "+str(cm.toplam)+" Founded: " + str(cm.bulunan) ,end = "\r")
+                    print(" Total: "+str(cm.total)+" Founded: " + str(cm.founded) ,end = "\r")
                 
                         
             except NameError:
@@ -99,14 +106,16 @@ class cm:
 if __name__ == "__main__":
 
     read.readFromText()
-
-    processes = [Process(target=cm.coklu, args=("1",)),
-                 Process(target=cm.coklu, args=("2",)),
-                 Process(target=cm.coklu, args=("3",)),
-                 Process(target=cm.coklu, args=("4",)),
-                 Process(target=cm.coklu, args=("5",)),
-                 Process(target=cm.coklu, args=("6",)),
-                 Process(target=cm.coklu, args=("7",))]
+    """
+    If you wants mor or less proccess you can change here
+    """
+    processes = [Process(target=cm.multitask, args=("1",)),
+                 Process(target=cm.multitask, args=("2",)),
+                 Process(target=cm.multitask, args=("3",)),
+                 Process(target=cm.multitask, args=("4",)),
+                 Process(target=cm.multitask, args=("5",)),
+                 Process(target=cm.multitask, args=("6",)),
+                 Process(target=cm.multitask, args=("7",))]
 
     
     for process in processes:
