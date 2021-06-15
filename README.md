@@ -3,7 +3,7 @@
 
 Bitcoin and crypto Brute Force 2021 2022 
 
-This project createing randomly bitcoin address and checking your address list. If your list has bitcoin, it will save your result file. 
+This project creating randomly bitcoin address and checking your address list. If created address in your list , it will save your result file. 
 This project not for steal money. This project for understand about crypto money.
 
 Disclaimer
