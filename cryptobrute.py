@@ -27,7 +27,7 @@ else:
     sys.exit("Please select input file with -i addresses.txt")
     
 if args.output:
-    outputFileName = args.input
+    outputFileName = args.output
 else:
     sys.exit("Please select output file with -o results.txt")
     
@@ -55,23 +55,24 @@ class save:
 
 class check:
     def balance(address):
-        balance = 0
+        balances = 0
         try:
             if address in addressArray:
-                balance = 1
+                balances = 1
             else:
-                balance = 0
+                balances = 0
         except NameError:
+            print("Error : "+str(NameError)+" Address : "+address)
             pass
 
-        return balance
+        return balances
 
 class cm:
     total = 0
     founded = 0
     def multitask(pss):
         i = 0
-        balance = float(0)
+        balance = 0
         found = 0
         while True:
             i += 1
@@ -90,14 +91,11 @@ class cm:
                 balance += float(check.balance(addr3))
                 balance += float(check.balance(addr4))
                 balance += float(check.balance(addr5))
-                """
-                if you change total process you have to change second parameter
-                cm.total += 5*secondParameter
-                """
-                cm.total += 5 * maximumProcess
+
+                cm.total += 5 * (maximumProcess+1)
                 cm.founded += found
                 if (i*5)%10000 == 0:
-                    print("Check Worker :"+str(pss)+" Address: " + addr1+" Privatekey uncompressed "+heks ,end = "\n")
+                    print("Check Worker :"+str(pss)+" Address: " + addr1+" Privatekey uncompressed "+heks+" i "+str(i*5) ,end = "\n")
                 if pss == 0:
                     print(" Total: "+str(cm.total)+" Founded: " + str(cm.founded) ,end = "\r")
                 
@@ -110,7 +108,7 @@ class cm:
             if balance > 0:
                 found += 1
                 save.toFile(res)
-                print(res)
+                #print(res)
 
 if __name__ == "__main__":
 
