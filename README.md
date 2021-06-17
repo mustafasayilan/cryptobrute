@@ -37,7 +37,7 @@ pip install bitcoinaddress
 pip install argparse
 pip install multiprocessing
 ```
-
+(python 3 allready has multiprocessing)
 
 Usage
 -----
