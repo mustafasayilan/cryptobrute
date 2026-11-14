@@ -1,6 +1,8 @@
 # Cryptobrute
 ===========
 
+[CPU and CUDA lab, regtest verification, and benchmark results](README.lab.md)
+
 Bitcoin and crypto Brute Force 2021 2022 
 
 This project creating randomly bitcoin address and checking your address list. If created address in your list , it will save your result file. 
