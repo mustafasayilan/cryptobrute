@@ -1,0 +1,67 @@
+{
+  "measured_at_utc": "2026-11-14T01:44:44+00:00",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python_version": "3.12.14",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "logical_processors": 32,
+  "candidate_count": 1000003,
+  "puzzle_number": 2026,
+  "target_label": 732983,
+  "match": 287831,
+  "warmups": 3,
+  "runs": 15,
+  "candidates_per_timed_scan": 1000003,
+  "total_timed_candidates_per_backend": 15000045,
+  "elapsed_ns": 2308353300,
+  "backends": {
+    "cpu": {
+      "worker_threads": 1,
+      "samples_ns": [
+        85554900,
+        86381600,
+        86186300,
+        87494400,
+        88282300,
+        86972200,
+        86589200,
+        86977800,
+        85801300,
+        86178500,
+        87628200,
+        86113300,
+        86740500,
+        88176100,
+        89644300
+      ],
+      "median_ns": 86740500,
+      "candidates_per_second": 11528675
+    },
+    "cuda": {
+      "device_index": 0,
+      "device": "NVIDIA GeForce RTX 4090",
+      "compute_capability": "8.9",
+      "driver_api_version": 13050,
+      "nvrtc_version": "12.9",
+      "setup_ns": 125867100,
+      "samples_ns": [
+        24500,
+        133500,
+        37900,
+        105900,
+        24200,
+        133900,
+        25100,
+        133500,
+        26400,
+        163600,
+        68200,
+        134500,
+        23600,
+        148400,
+        67900
+      ],
+      "median_ns": 68200,
+      "candidates_per_second": 14662800587
+    }
+  }
+}

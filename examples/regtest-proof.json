@@ -1,0 +1,16 @@
+{
+  "network": "regtest",
+  "regtest_address": "bcrt1qw508d6qejxtdg4y5r3zarvary0c5xw7kygt080",
+  "key_source": "public_test_vector",
+  "public_keys_checked": 1,
+  "distinct_addresses_checked": 2,
+  "matched": true,
+  "matched_line": 2,
+  "elapsed_ns": 10539100,
+  "proof": {
+    "format": "cryptobrute-ecdsa-secp256k1-sha256-v1",
+    "message": "Cryptobrute regtest address match v1",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEeb5mfvncu6xVoGKVzocLBwKb/NstzijZ\nWfKBWxb4F5hIOtp3JqPEZV2k+/wOEQio/Re0SKaFVBmcR9CP+xDUuA==\n-----END PUBLIC KEY-----\n",
+    "signature_der_base64": "MEUCIQCo5LHXpgVE4/QZIemO+b6fXYG2pJJtQ0f7wzZ5nkou6QIgKLmebyJiAaQgoJeEB2qKr6pWV06vfCX5rpTcJSGszeI="
+  }
+}
