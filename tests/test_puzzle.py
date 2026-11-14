@@ -66,7 +66,10 @@ class PuzzleTests(unittest.TestCase):
             ])
         self.assertEqual(exit_code, 0)
         self.assertEqual(json.loads(stdout.getvalue())["total_timed_candidates_per_backend"], 514)
-        self.assertIn("cpu 2/2 | 514 timed candidates", stderr.getvalue())
+        self.assertRegex(
+            stderr.getvalue(),
+            r"cpu 2/2 \| 514 timed candidates \| [\d,]+ candidates/s \| scan \d+\.\d+ ms \| elapsed \d+\.\d+ s",
+        )
 
 
 @unittest.skipUnless(os.environ.get("CRYPTOBRUTE_TEST_CUDA") == "1", "Set CRYPTOBRUTE_TEST_CUDA=1 to test CUDA.")

@@ -43,9 +43,10 @@ def run_benchmark(args):
 
     def report_sample(backend, completed, scan_ns):
         total = (perf_counter_ns() - start) / 1e9
+        rate = f"{args.size * 1e9 / scan_ns:,.0f} candidates/s" if scan_ns else "rate unavailable"
         print(
             f"{backend} {completed}/{args.runs} | {completed * args.size:,} timed candidates "
-            f"| scan {scan_ns / 1e6:.3f} ms | elapsed {total:.3f} s",
+            f"| {rate} | scan {scan_ns / 1e6:.3f} ms | elapsed {total:.3f} s",
             file=sys.stderr,
             flush=True,
         )
@@ -134,7 +135,7 @@ def main(argv=None):
     timing.add_argument("--backend", choices=("cpu", "cuda", "both"), default="both")
     timing.add_argument("--runs", type=int, default=15, help="Timed runs per backend")
     timing.add_argument("--warmups", type=int, default=3, help="Untimed runs per backend")
-    timing.add_argument("--progress", action="store_true", help="Print live progress to stderr")
+    timing.add_argument("--progress", action="store_true", help="Print progress and scan rate to stderr")
     timing.set_defaults(run=run_benchmark)
 
     audit = commands.add_parser("audit", help="Read confirmed UTXOs for supplied Bitcoin addresses")

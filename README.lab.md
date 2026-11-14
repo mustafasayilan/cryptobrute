@@ -19,7 +19,7 @@ python -m cryptobrute_lab benchmark --backend both --size 1000003 --puzzle 2026 
 
 Both demo commands should return target label `732983` and match `287831`. The input range is `0` through `size - 1`, with a maximum of 1,048,576 candidates. The CPU reference scans the whole range on one thread. The CUDA kernel assigns one candidate to each GPU thread and checks that its index is within range. A fixed permutation of the candidate index produces each label.
 
-The demo reports the number of candidates scanned, scan time, and total elapsed time in nanoseconds. With `--progress`, the benchmark writes progress, cumulative candidate counts and elapsed time to stderr after each measured scan. The JSON report on stdout includes all samples and the CUDA setup time.
+The demo reports the number of candidates scanned, scan time, and total elapsed time in nanoseconds. With `--progress`, the benchmark writes progress, cumulative candidate counts, candidates per second, and elapsed time to stderr after each measured scan. The JSON report on stdout includes all samples and the CUDA setup time. In PowerShell, append `| Tee-Object -FilePath .\benchmark.json` to display and save that report.
 
 The Windows Toolkit installer normally sets `CUDA_PATH`. For a custom installation, set `$env:CUDA_PATH` to the toolkit root in PowerShell. On Linux, the default root is `/usr/local/cuda`. You can set `CUDA_PATH` or `CUDA_HOME` to another toolkit root. A driver-only installation typically lacks NVRTC. Use `--device 0` to select the first CUDA device, or use `--backend cpu` on a machine without CUDA.
 
